@@ -1,6 +1,7 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import {
   provideRouter,
+  withComponentInputBinding,
   withHashLocation,
   withInMemoryScrolling,
   withViewTransitions,
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(
       routes,
+      withComponentInputBinding(),
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
       withViewTransitions(),
     ),

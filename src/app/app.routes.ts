@@ -32,7 +32,7 @@ export const routes: Routes = [
     title: 'Cart',
   },
   {
-    path: 'details',
+    path: 'details/:id/:slug',
     loadComponent: () =>
       import('./features/products/details/details.component').then((m) => m.DetailsComponent),
     title: 'Details',
