@@ -9,9 +9,11 @@ export const routes: Routes = [
     title: 'Shop',
   },
   {
-    path: 'categories',
+    path: 'categories/:id',
     loadComponent: () =>
-      import('./features/categories/categories.component').then((m) => m.CategoriesComponent),
+      import('./features/categories/category-details/category-details.component').then(
+        (m) => m.CategoryDetailsComponent,
+      ),
     title: 'Categories',
   },
   {

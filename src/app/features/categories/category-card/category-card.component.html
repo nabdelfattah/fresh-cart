@@ -1,0 +1,7 @@
+<a
+  [routerLink]="['categories', data()._id]"
+  class="shadow rounded p-4 flex flex-col gap-4 items-center text-center"
+>
+  <img [src]="data().image" [alt]="data().name" class="size-20 rounded-full" />
+  <h3>{{ data().name }}</h3>
+</a>
