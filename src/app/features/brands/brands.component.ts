@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
+import { from, fromEvent, map, Observable, of, scan } from 'rxjs';
 
 @Component({
   imports: [],
   selector: 'app-brands',
-  styleUrl: './brands.component.css',
   templateUrl: './brands.component.html',
 })
-export class BrandsComponent {}
+export class BrandsComponent {
+  ovservable = of([1, 2, 3, 4, 5]);
+
+  ngOnInit() {
+    this.ovservable.subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.log(err),
+      complete: () => console.log('completer run ...'),
+    });
+  }
+}
