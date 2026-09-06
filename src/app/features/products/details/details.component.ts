@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
       next: (res) => {
         this.data.set(res);
       },
-      error: (err) => console.log(err),
+      error: () => {},
     });
   }
 }

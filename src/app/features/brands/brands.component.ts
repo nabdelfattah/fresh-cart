@@ -11,9 +11,9 @@ export class BrandsComponent {
 
   ngOnInit() {
     this.ovservable.subscribe({
-      next: (res) => console.log(res),
-      error: (err) => console.log(err),
-      complete: () => console.log('completer run ...'),
+      next: (res) => {},
+      error: (err) => {},
+      complete: () => {},
     });
   }
 }

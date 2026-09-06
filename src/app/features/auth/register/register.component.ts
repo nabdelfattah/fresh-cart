@@ -44,7 +44,6 @@ export class RegisterComponent {
       // send data to backend
       this.authService.signUp(this.registerForm.value).subscribe({
         next: (res) => {
-          console.log(res);
           if (res.message === 'success') {
             // navigate to login
             this.router.navigate(['/login']);

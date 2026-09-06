@@ -21,7 +21,7 @@ export class CategoryHomeComponent implements OnInit {
   getCategories() {
     this.categoriesService.getAllCategories().subscribe({
       next: (res) => this.categories.set(res),
-      error: (err) => console.log(err),
+      error: (err) => {},
     });
   }
 }

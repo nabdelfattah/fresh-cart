@@ -22,9 +22,7 @@ export class CategoryDetailsComponent implements OnInit {
       next: (res) => {
         this.data.set(res);
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 }

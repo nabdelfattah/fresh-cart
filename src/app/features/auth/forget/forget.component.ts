@@ -16,7 +16,10 @@ export class ForgetComponent {
   step = signal(1);
 
   email = new FormControl('', [Validators.required]);
-  code = new FormControl('', [Validators.required]);
+  code = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
   password = new FormControl('', [Validators.required]);
 
   submitEmailHandler(event: Event) {
@@ -25,7 +28,6 @@ export class ForgetComponent {
       // send data to backend
       this.authService.forgetPassword({ email: this.email.value }).subscribe({
         next: (res) => {
-          console.log(res);
           this.step.set(2);
         },
       });
@@ -36,9 +38,8 @@ export class ForgetComponent {
     event.preventDefault();
     if (this.code.valid) {
       // send data to backend
-      this.authService.verifyEmail({ code: this.code.value }).subscribe({
+      this.authService.verifyEmail({ resetCode: this.code.value }).subscribe({
         next: (res) => {
-          console.log(res);
           this.step.set(3);
         },
       });
@@ -55,7 +56,6 @@ export class ForgetComponent {
       };
       this.authService.resetPassword(data).subscribe({
         next: (res) => {
-          console.log(res);
           this.step.set(1);
           // navigate
           this.router.navigate(['/login']);
@@ -66,9 +66,7 @@ export class ForgetComponent {
 
   resendCodeHandler() {
     this.authService.forgetPassword({ email: this.email.value }).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
+      next: (res) => {},
     });
   }
 }

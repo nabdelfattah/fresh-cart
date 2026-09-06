@@ -35,7 +35,7 @@ export function matchPasswords(passwordKey: string, confirmPasswordKey: string) 
 // ) {
 //   const password = group.get(passwordKey)?.value;
 //   const rePassword = group.get(rePasswordKey)?.value;
-//   console.log('hi...');
+//
 //   if (password !== rePassword && rePassword != '') {
 //     // set error to the repassword form control
 //     group.get(rePasswordKey)?.setErrors({ mismatch: true });

@@ -23,9 +23,7 @@ export class ProductHomeComponent implements OnInit {
       next: (res) => {
         this.products.set(res);
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 }
