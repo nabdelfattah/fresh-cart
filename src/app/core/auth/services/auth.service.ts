@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   private readonly httpClient = inject(HttpClient);
   private readonly router = inject(Router);
+
+  isLogged = signal(false);
 
   signUp(data: object): Observable<any> {
     return this.httpClient.post<any>(environment.baseUrl + '/auth/signup', data);
@@ -30,6 +32,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('freshToken');
     localStorage.removeItem('freshUser');
+    this.isLogged.set(false);
     this.router.navigate(['/login']);
   }
 }

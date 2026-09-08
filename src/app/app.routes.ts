@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
+import { authGuard } from '@core/auth/guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
@@ -24,12 +25,14 @@ export const routes: Routes = [
   },
   {
     path: 'wishlist',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./features/wishlist/wishlist.component').then((m) => m.WishlistComponent),
     title: 'Wishlist',
   },
   {
     path: 'cart',
+    canActivate: [authGuard],
     loadComponent: () => import('./features/cart/cart.component').then((m) => m.CartComponent),
     title: 'Cart',
   },
@@ -41,12 +44,14 @@ export const routes: Routes = [
   },
   {
     path: 'checkout',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./features/payment/checkout/checkout.component').then((m) => m.CheckoutComponent),
     title: 'Checkout',
   },
   {
     path: 'orders',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./features/orders/orders.component').then((m) => m.OrdersComponent),
     title: 'Orders',
