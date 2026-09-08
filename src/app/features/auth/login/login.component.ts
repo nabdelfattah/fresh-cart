@@ -34,6 +34,9 @@ export class LoginComponent {
             localStorage.setItem('freshToken', res.token);
             localStorage.setItem('freshUser', JSON.stringify(res.user));
 
+            this.authService.isLogged.set(true);
+            console.log({ isLogged: this.authService.isLogged() });
+
             // navigate to home page
             this.router.navigate(['/']);
           }
