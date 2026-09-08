@@ -21,10 +21,12 @@ export class ProductCardComponent {
     if (localStorage.getItem('freshToken')) {
       this.cartService.addProductToCart(id).subscribe({
         next: (res) => {
+          console.log(res);
           this.toastrService.success(res.message, 'FreshCart', {
             progressBar: true,
             closeButton: true,
           });
+          this.cartService.cartCount.set(res.numOfCartItems);
         },
       });
     } else {

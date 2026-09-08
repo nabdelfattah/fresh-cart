@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Service()
 export class CartService {
   private readonly httpClient = inject(HttpClient);
+  cartCount = signal(0);
 
   addProductToCart(id: string): Observable<any> {
     return this.httpClient.post(environment.baseUrl2 + '/cart', {

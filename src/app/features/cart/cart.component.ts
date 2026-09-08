@@ -28,12 +28,14 @@ export class CartComponent {
 
   ngOnInit() {
     this.getCartProducts();
+    this.cartService.cartCount.set(this.cartDetails().numOfCartItems);
   }
 
   getCartProducts() {
     this.cartService.getCartProducts().subscribe({
       next: (res) => {
         this.cartDetails.set(res);
+        this.cartService.cartCount.set(this.cartDetails().numOfCartItems);
         console.log(this.cartDetails());
       },
       error: () => {},
@@ -44,6 +46,7 @@ export class CartComponent {
     this.cartService.removeItem(id).subscribe({
       next: (res) => {
         this.cartDetails.set(res);
+        this.cartService.cartCount.set(this.cartDetails().numOfCartItems);
       },
     });
   }
@@ -56,6 +59,7 @@ export class CartComponent {
           closeButton: true,
         });
         this.cartDetails.set(res);
+        this.cartService.cartCount.set(this.cartDetails().numOfCartItems);
       },
     });
   }
